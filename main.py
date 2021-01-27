@@ -11,11 +11,12 @@ plansza = [[Komorka(i,j) for j in range(m+2)] for i in range(n+2)]
 
 field.drawGrid()
 
-while (zapis):
+while (field.zapis):
     field.input()
+    print("pro")
     
 
-
+print("elo")
 while (True):
     field.work()
     for i in range (1,n+1):
