@@ -34,4 +34,4 @@ class Komorka:
         
         self.ilesasiadow = suma
         
-        return  self
+        return self

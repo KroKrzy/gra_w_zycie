@@ -4,10 +4,10 @@ import sys
 
 
 class Plansza:
-    def __init__(self):
+    def __init__(self, n, m):
         pygame.init()
-        self.wysokosc_Okna = 720
-        self.szerokosc_Okna = 1080
+        self.wysokosc_Okna = m
+        self.szerokosc_Okna = n
         self.rozmiar_Kratki = 15
         self.screen = pygame.display.set_mode((self.szerokosc_Okna, self.wysokosc_Okna))
 
@@ -35,6 +35,7 @@ class Plansza:
                 pygame.draw.rect(self.screen, (200, 200, 200), rect, 1)
 
     def input(self):
+        global zapis
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit(0)
@@ -42,6 +43,8 @@ class Plansza:
                 sys.exit(0)
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 self.drawRect()
+            elif event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
+                zapis = False
 
 
 field = Plansza()
