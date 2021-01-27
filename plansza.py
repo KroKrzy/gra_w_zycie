@@ -11,7 +11,7 @@ class Plansza:
         self.szerokosc_Okna = n
         self.rozmiar_Kratki = 15
         self.screen = pygame.display.set_mode((self.szerokosc_Okna, self.wysokosc_Okna))
-
+        self.temp = [0,0]
     def mouse_position(self):
         mousePos = pygame.mouse.get_pos()
         x = mousePos[0]
@@ -43,7 +43,9 @@ class Plansza:
             elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
                 sys.exit(0)
             elif event.type == pygame.MOUSEBUTTONDOWN:
-                self.drawRect(self.mouse_position())
+                self.temp=self.mouse_position()
+                print(self.temp)
+                self.drawRect(self.temp)
             elif event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
                 self.zapis = False
 
@@ -52,13 +54,4 @@ class Plansza:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit(0)
-
-    def draw(self):
-        self.screen.fill((0,0,0))
-        myimage = pygame.image.load("temp.jpeg").convert_alpha()
-        self.screen.blit(myimage,myimage.get_rect())
-        
-        for i in range (self.wysokosc_Okna):
-            for j in range(self.szerokosc_Okna):
-                if plansza[i][j].zyje:
-                    self.drawRect([i,j])        
+      

@@ -1,27 +1,38 @@
-from komorka import Komorka
+from komorka import *
 from plansza import Plansza
 import time
+import pygame
 
-n = int(input("Podaj szerokosc planszy: "))
-m = int(input("Podaj wysokosc planszy: "))
+
 zapis = True
-field = Plansza(n, m)
+field = Plansza(k, l)
 
-plansza = [[Komorka(i,j) for j in range(m+2)] for i in range(n+2)]
+
 
 field.drawGrid()
 
 while (field.zapis):
     field.input()
-    print("pro")
-    
+    plansza[int(field.temp[0]/15+1)][int(field.temp[1]/15+1)].zyje = True
 
-print("elo")
+
 while (True):
+    
     field.work()
+    
     for i in range (1,n+1):
         for j in range (1,m+1):
             plansza[i][j].liczsasiadow()
-
-    field.draw()
+        
+    for i in range (1,n+1):
+        for j in range (1,m+1):
+            plansza[i][j].czy_zyje()
+            
+    field.screen.fill((0,0,0))
+    myimage = pygame.image.load("temp.jpeg").convert_alpha()
+    field.screen.blit(myimage,myimage.get_rect())
+    for i in range(n):
+        for j in range(m):
+            if plansza[i][j].zyje:
+                field.drawRect([i*15,j*15])
     time.sleep(0.5)

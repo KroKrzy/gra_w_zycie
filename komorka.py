@@ -1,3 +1,6 @@
+
+
+
 class Komorka:
     def __init__(self,x,y):
         self.zyje= False
@@ -15,23 +18,32 @@ class Komorka:
         """Metoda sprawdza ilosc sasiadow"""
         global plansza
         suma = 0
-        if plansza[self.x-1][self.y-1]:
+        if plansza[self.x-1][self.y-1].zyje:
             suma += 1
-        if plansza[self.x-1][self.y]:
+        if plansza[self.x-1][self.y].zyje:
             suma += 1
-        if plansza[self.x-1][self.y+1]:
+        if plansza[self.x-1][self.y+1].zyje:
             suma += 1
-        if plansza[self.x][self.y-1]:
+        if plansza[self.x][self.y-1].zyje:
             suma += 1
-        if plansza[self.x][self.y+1]:
+        if plansza[self.x][self.y+1].zyje:
             suma += 1
-        if plansza[self.x+1][self.y-1]:
+        if plansza[self.x+1][self.y-1].zyje:
             suma += 1
-        if plansza[self.x+1][self.y]:
+        if plansza[self.x+1][self.y].zyje:
             suma += 1
-        if plansza[self.x+1][self.y+1]:
+        if plansza[self.x+1][self.y+1].zyje:
             suma += 1
         
         self.ilesasiadow = suma
         
         return self
+
+l = int(input("Podaj szerokosc planszy: "))
+k = int(input("Podaj wysokosc planszy: "))
+
+m=int(l/15)
+n=int(k/15)
+
+plansza = [[Komorka(i,j) for j in range(m+2)] for i in range(n+2)]
+
