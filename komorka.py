@@ -39,11 +39,11 @@ class Komorka:
         
         return self
 
-l = int(input("Podaj szerokosc planszy: "))
-k = int(input("Podaj wysokosc planszy: "))
+m = int(input("Podaj szerokosc planszy: "))
+n = int(input("Podaj wysokosc planszy: "))
 
-m=int(l/15)
-n=int(k/15)
+l=int(n*15)
+k=int(m*15)
 
 plansza = [[Komorka(i,j) for j in range(m+2)] for i in range(n+2)]
 
